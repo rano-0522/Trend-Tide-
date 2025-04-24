@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Privacy Policy - Trend Tied">
+    <title>Privacy Policy - Trend Tied</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        #privacy-policy p, #privacy-policy ul {
+            line-height: 1.4; /* Reduced line spacing */
+        }
+        .hamburger-menu {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .nav-list {
+            display: none;
+        }
+        .nav-list.show {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <header class="dark-header">
+        <div class="container" style="text-align: center;">
+            <h1 class="logo">Trend Tied</h1>
+            <nav class="navbar">
+                <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
+                <ul class="nav-list">
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="Explore.html">Explore</a></li>
+                    <li><a href="LoginSignup.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="privacy-policy" class="section">
+            <div class="container">
+                <h2>Privacy Policy</h2>
+                <p>Welcome to <strong>Trend Tied</strong>. Your privacy is important to us. This Privacy Policy explains how we collect, use, share, and protect your personal information when you use our website.</p>
+                <p>By using our Website, you agree to the terms of this Privacy Policy. If you do not agree, please do not use our services.</p>
+                <h3>Information We Collect</h3>
+                <p>We collect the following types of information:</p>
+                <h4>a. Personal Information</h4>
+                <p>When you register, subscribe, or contact us, we may collect:</p>
+                <ul>
+                    <li>Name</li>
+                    <li>Email address</li>
+                    <li>Social media profiles (optional)</li>
+                    <li>Payment information (if you purchase premium content or services)</li>
+                </ul>
+                <h4>b. Non-Personal Information</h4>
+                <p>We automatically collect:</p>
+                <ul>
+                    <li>IP address</li>
+                    <li>Browser type</li>
+                    <li>Device information</li>
+                    <li>Cookies and tracking data</li>
+                </ul>
+                <h4>c. User-Generated Content</h4>
+                <p>If you post content, comments, or participate in discussions, we may collect that information.</p>
+                <h3>How We Use Your Information</h3>
+                <p>We use your data to:</p>
+                <ul>
+                    <li>Provide and improve our services</li>
+                    <li>Personalize your experience</li>
+                    <li>Send newsletters, updates, and promotions</li>
+                    <li>Process payments</li>
+                    <li>Analyze trends and user behavior</li>
+                    <li>Respond to inquiries and provide support</li>
+                </ul>
+                <p>If you have any questions, email us.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="dark-footer">
+        <div class="container">
+            <div class="follow-us">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon twitter"></a>
+                    <a href="https://instagram.com" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://linkedin.com" target="_blank" class="social-icon linkedin"></a>
+                </div>
+            </div>
+            <p class="privacy-links">
+                <a href="PrivacyPolicy.html">Privacy Policy</a> | 
+                <a href="TermsOfUse.html">Terms of Use</a>
+            </p>
+            <p>&copy; 2023 Trend Tied. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

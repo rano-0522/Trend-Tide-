@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Feedback - Trend Tied">
+    <title>Feedback - Trend Tied</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="dark-header">
+        <div class="container" style="text-align: center;">
+            <h1 class="logo" onclick="redirectToHome()" style="cursor: pointer;">Trend Tied</h1>
+            <nav class="navbar">
+                <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
+                <ul class="nav-list">
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="Explore.html">Explore</a></li>
+                    <li><a href="LoginSignup.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="feedback" class="section">
+            <div class="container">
+                <h2>Feedback</h2>
+                <p>We value your feedback! Please share your thoughts and rate us below.</p>
+                <form action="#" method="post" class="feedback-form">
+                    <div class="form-group">
+                        <label for="message">Your Feedback:</label>
+                        <textarea id="message" name="message" rows="5" placeholder="Write your feedback here..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Rate Us:</label>
+                        <div class="star-rating center-stars">
+                            <input type="radio" id="star5" name="rating" value="5" required>
+                            <label for="star5" title="5 stars">★</label>
+                            <input type="radio" id="star4" name="rating" value="4">
+                            <label for="star4" title="4 stars">★</label>
+                            <input type="radio" id="star3" name="rating" value="3">
+                            <label for="star3" title="3 stars">★</label>
+                            <input type="radio" id="star2" name="rating" value="2">
+                            <label for="star2" title="2 stars">★</label>
+                            <input type="radio" id="star1" name="rating" value="1">
+                            <label for="star1" title="1 star">★</label>
+                        </div>
+                    </div>
+                    <button type="submit" class="cta-btn">Submit Feedback</button>
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="dark-footer">
+        <div class="container">
+            <div class="follow-us">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon twitter"></a>
+                    <a href="https://instagram.com" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://linkedin.com" target="_blank" class="social-icon linkedin"></a>
+                </div>
+            </div>
+            <p class="privacy-links">
+                <a href="PrivacyPolicy.html">Privacy Policy</a> | 
+                <a href="TermsOfUse.html">Terms of Use</a>
+            </p>
+            <p>&copy; 2023 Trend Tied. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function redirectToHome() {
+            window.location.href = "Index.html"; // Redirect to the home page
+        }
+
+        function toggleMenu() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

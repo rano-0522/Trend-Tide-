@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SEO and performance-optimized website">
+    <title>Home - Trend Tied</title>
+    <!-- Add Leaflet CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+     crossorigin=""/>
+    <!-- Add Leaflet JavaScript -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+    <header class="dark-header" style="position: fixed; top: 0; width: 100%; z-index: 1000;">
+        <div class="container" style="text-align: center;"> <!-- Center the logo -->
+            <h1 class="logo" onclick="redirectToHome()" style="cursor: pointer;">Trend Tied</h1>
+            <nav class="navbar">
+                <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
+                <ul class="nav-list">
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="Dashboard.html">Dashboard</a></li>
+                    <li><a href="Collaboration.html">Collaboration</a></li>
+                    <li><a href="Feedback.html">Feedback</a></li>
+                    <li><a href="LoginSignup.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h2>Welcome to My Creative Space</h2>
+                <p>Sharing stories, ideas, and inspiration under the sunset skies.</p>
+                <section id="guides-resources" class="row-section">
+                    <div class="row-container">
+                        <div class="row-item">
+                            <h2 class="highlighted-heading">Expert Guides & Tutorials</h2>
+                            <p>Step-by-step content on video production, podcasting, blogging, and social media growth.</p>
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/cmy4-skIE2s" 
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                        <div class="row-item">
+                            <h2 class="highlighted-heading">Tools & Resources</h2>
+                            <p>Curated software, templates, and strategies to streamline your workflow.</p>
+                            <iframe width="100%" height="315" src="https://www.youtube.com/embed/DqAhXqgZGsA" 
+                                title="YouTube video player" frameborder="0" 
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                                allowfullscreen>
+                            </iframe>
+                        </div>
+                    </div>
+                </section>
+                <a href="Explore.html" class="cta-btn">Explore More</a> <!-- Updated to link to Explore Page -->
+            </div>
+        </section>
+    </main>
+    <!-- Map Section -->
+    <div id="map-section" style="margin: 30px auto; max-width: 800px; padding: 20px; background: #f5f5f5; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+        <!-- Map Container -->
+        <div style="width: 100%;">
+            <h2 style="text-align: center; margin-bottom: 15px;">Discover Trendy Locations</h2>
+            <p style="text-align: center; margin-bottom: 20px;">Explore the locations associated with trendy events, places, and hotspots:</p>
+            <div id="map" style="height: 300px; width: 100%; margin: 0 auto; border-radius: 8px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);"></div>
+        </div>
+    </div>
+
+    <footer class="dark-footer">
+        <div class="container">
+            <div class="follow-us">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon twitter"></a>
+                    <a href="https://instagram.com" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://linkedin.com" target="_blank" class="social-icon linkedin"></a>
+                </div>
+            </div>
+            <p class="privacy-links">
+                <a href="PrivacyPolicy.html">Privacy Policy</a> | 
+                <a href="TermsOfUse.html">Terms of Use</a>
+            </p>
+            <p>&copy; 2023 Trend Tied. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleDetails(event, id) {
+            event.preventDefault();
+            const details = document.getElementById(id);
+            const button = event.target;
+
+            if (details.style.display === "none" || details.style.display === "") {
+                details.style.display = "block";
+                button.textContent = "Show Less";
+                details.appendChild(button); // Move the button to the bottom of the expanded content
+            } else {
+                details.style.display = "none";
+                button.textContent = "Read More";
+                const parent = button.closest(".blog-post");
+                parent.appendChild(button); // Move the button back to its original position
+            }
+        }
+
+        function hideSignupSection() {
+            const signupSection = document.getElementById('signup-section');
+            if (signupSection) {
+                signupSection.style.display = 'none';
+            }
+        }
+
+        function toggleMenu() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('show'); // Toggle visibility of the navigation menu
+        }
+
+        function redirectToHome() {
+            window.location.href = "Index.html"; // Redirect to the home page
+        }
+
+        // Initialize the map
+        var map = L.map('map').setView([20.5937, 78.9629], 5); // Centered on India
+
+        // Add the OpenStreetMap tiles
+        L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            maxZoom: 19,
+            attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+        }).addTo(map);
+
+        // Define trending locations with their coordinates and information
+        var locations = [
+            { name: "Delhi", lat: 28.6139, lon: 77.2090, trend: "Latest Fashion Hub - Streetwear trends and designer boutiques" },
+            { name: "Mumbai", lat: 19.0760, lon: 72.8777, trend: "Entertainment Capital - Bollywood and digital content creation" },
+            { name: "Bangalore", lat: 12.9716, lon: 77.5946, trend: "Tech Innovation Hub - Startups and IT companies" },
+            { name: "Chennai", lat: 13.0827, lon: 80.2707, trend: "Cultural Fusion - Traditional meets modern trends" },
+            { name: "Hyderabad", lat: 17.3850, lon: 78.4867, trend: "Food Technology Hub - Cloud kitchens and food innovation" }
+        ];
+
+        // Add markers for each location
+        locations.forEach(location => {
+            L.marker([location.lat, location.lon])
+                .addTo(map)
+                .bindPopup("<b>" + location.name + "</b><br>" + location.trend);
+        });
+    </script>
+    <!-- Leaflet JS -->
+<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.17.1/firebase-database.js"></script>
+</body>
+</html>

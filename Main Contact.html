@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Me</title>
+    <style>
+        /* Universal Selector */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        /* Element Selector */
+        body {
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            font-family: Arial, sans-serif;
+            color: #333;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            color: white;
+            text-transform: uppercase;
+        }
+        
+        /* ID Selector */
+        #contact-form {
+            background: rgba(255, 255, 255, 0.8);
+            padding: 20px;
+            border: 2px solid #ff7e5f;
+            width: 50%;
+            margin: auto;
+            position: relative;
+            z-index: 10;
+        }
+        
+        /* Class Selector */
+        .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-group label {
+            display: block;
+            font-weight: bold;
+        }
+        
+        .form-group input, .form-group textarea {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+        
+        .form-group textarea {
+            height: 100px;
+        }
+        
+        /* Pseudo-class */
+        input:focus, textarea:focus {
+            border-color: #ff7e5f;
+            outline: none;
+        }
+        
+        /* Pseudo-element */
+        h1::after {
+            content: "✨";
+            display: inline-block;
+            margin-left: 5px;
+        }
+        
+        /* Descendant Selector */
+        form input, form textarea {
+            background-color: #fff;
+        }
+        
+        /* List Styling */
+        ul {
+            list-style-type: square;
+            padding-left: 20px;
+        }
+        
+        /* Overflow */
+        .overflow-box {
+            width: 200px;
+            height: 100px;
+            overflow: auto;
+            border: 1px solid black;
+            padding: 10px;
+            background: #fff;
+        }
+        
+        /* Positioning */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            background: #ff7e5f;
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+        
+        .absolute-box {
+            position: absolute;
+            right: 10px;
+            top: 10px;
+            background: white;
+            padding: 5px;
+            border: 1px solid #333;
+        }
+    </style>
+</head>
+<body>
+    <header class="sticky-header">Contact Me</header>
+    <main>
+        <p>If you have any questions or collaboration ideas, feel free to reach out!</p>
+        
+        <h2>Contact Form</h2>
+        <form id="contact-form" action="submit_form.php" method="post">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            
+            <input type="submit" value="Send">
+        </form>
+        
+        <h2>Other Ways to Connect</h2>
+        <p>Email: contact@example.com</p>
+        <p>Follow me on social media:</p>
+        <ul>
+            <li><a href="#">Instagram</a></li>
+            <li><a href="#">Twitter</a></li>
+            <li><a href="#">YouTube</a></li>
+        </ul>
+        
+        <div class="overflow-box">
+            This is an example of an overflow box. If the content exceeds the height, it will become scrollable.
+        </div>
+        
+        <div class="absolute-box">Absolute Positioned Box</div>
+    </main>
+</body>
+</html>

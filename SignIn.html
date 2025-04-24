@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sign In - Trend Tied">
+    <title>Sign In - Trend Tied</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        header {
+            width: 100%;
+            text-align: center;
+        }
+        main {
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+        }
+        footer {
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+        }
+        .container {
+            background-color: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .signin-link {
+            color: #ff007f;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .signin-link:hover {
+            color: #ff4da6;
+            text-shadow: 0 0 5px #ff4da6, 0 0 10px #ff4da6;
+        }
+    </style>
+</head>
+<body>
+    <header class="dark-header" style="position: fixed; top: 0; width: 100%; z-index: 1000;">
+        <div class="container" style="text-align: center;">
+            <h1 class="logo" onclick="redirectToHome()" style="cursor: pointer;">Trend Tied</h1>
+            <nav class="navbar">
+                <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
+                <ul class="nav-list">
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="Dashboard.html">Dashboard</a></li>
+                    <li><a href="Collaboration.html">Collaboration</a></li>
+                    <li><a href="Feedback.html">Feedback</a></li>
+                    <li><a href="LoginSignup.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main style="margin-top: 80px;">
+        <section id="sign-in" class="section">
+            <div class="container">
+                <h2>Sign In</h2>
+                <p>Access your account by signing in below.</p>
+                <div class="form-gap"></div> <!-- Added gap -->
+                <form action="processSignIn.html" method="POST" class="contact-form">
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Password:</label>
+                        <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <input type="checkbox" id="remember-me" name="remember-me"> Remember me
+                        </label>
+                    </div>
+                    <div class="form-group" style="text-align: center;"> <!-- Center-align the button -->
+                        <button type="submit" class="cta-btn">Sign In</button>
+                    </div>
+                </form>
+                <p>Don't have an account? <a href="SignUp.html" class="signin-link">Sign in here</a>.</p>
+            </div>
+        </section>
+    </main>
+    <footer class="dark-footer">
+        <div class="container">
+            <div class="follow-us">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon twitter"></a>
+                    <a href="https://instagram.com" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://linkedin.com" target="_blank" class="social-icon linkedin"></a>
+                </div>
+            </div>
+            <p class="privacy-links">
+                <a href="PrivacyPolicy.html">Privacy Policy</a> | 
+                <a href="TermsOfUse.html">Terms of Use</a>
+            </p>
+            <p>&copy; 2023 Trend Tied. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function toggleMenu() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('show');
+        }
+
+        function redirectToHome(event) {
+            event.preventDefault(); // Prevent form submission
+            window.location.href = "Index.html"; // Redirect to the home page
+        }
+    </script>
+</body>
+</html>

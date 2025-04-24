@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="About Us - Trend Tied">
+    <title>About Us - Trend Tied</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .about-section {
+            animation: fadeIn 1s ease-in-out;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            border-radius: 10px;
+            background: rgba(15, 12, 41, 0.8);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center; /* Center-align content */
+        }
+
+        .about-section:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        .about-section h3 {
+            font-size: 2rem; /* Consistent heading size */
+            color: #00ffff;
+            margin-bottom: 1rem;
+        }
+
+        .about-section p {
+            font-size: 1.2rem; /* Consistent paragraph size */
+            line-height: 1.8;
+            color: #fff;
+        }
+
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem; /* Consistent spacing between team members */
+            justify-content: center;
+        }
+
+        .team-member {
+            background: rgba(15, 12, 41, 0.8);
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 280px; /* Consistent width for team members */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .team-member:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 15px rgba(255, 0, 127, 0.5);
+        }
+
+        .team-member img {
+            width: 120px; /* Consistent image size */
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+        }
+
+        .team-member h4 {
+            font-size: 1.5rem; /* Consistent name size */
+            color: #ff007f;
+            margin-bottom: 0.5rem;
+            text-shadow: 0 0 5px rgba(255, 0, 127, 0.5), 0 0 10px rgba(255, 0, 127, 0.3);
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .team-member h4:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+            text-shadow: 0 0 10px rgba(255, 0, 127, 0.7), 0 0 20px rgba(255, 0, 127, 0.5); /* Enhanced glow on hover */
+        }
+
+        .testimonial {
+            background: rgba(15, 12, 41, 0.8);
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            margin-bottom: 1.5rem;
+            text-align: center; /* Center-align testimonials */
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .testimonial:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(0, 255, 255, 0.5);
+        }
+
+        .testimonial p {
+            font-size: 1.2rem; /* Consistent testimonial text size */
+            font-style: italic;
+            color: #fff;
+        }
+
+        .testimonial h4 {
+            font-size: 1.2rem; /* Consistent author size */
+            text-align: right;
+            color: #00ffff;
+            margin-top: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="dark-header">
+        <div class="container" style="text-align: center;">
+            <h1 class="logo" onclick="redirectToHome()" style="cursor: pointer;">Trend Tied</h1>
+            <nav class="navbar">
+                <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
+                <ul class="nav-list">
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="Explore.html">Explore</a></li>
+                    <li><a href="LoginSignup.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="about-us" class="section">
+            <div class="container">
+                <div class="about-section">
+                    <h3>Our Vision</h3>
+                    <p>To inspire and empower creators worldwide to share their stories and connect with their audience authentically.</p>
+                </div>
+                <div class="about-section">
+                    <h3>Our Mission</h3>
+                    <p>To provide tools, resources, and a supportive community that enables creators to thrive in the digital world.</p>
+                </div>
+                <div class="about-section">
+                    <h3>Our Values</h3>
+                    <p>We believe in creativity, authenticity, and collaboration. These values guide everything we do at Trend Tied.</p>
+                </div>
+                <div class="about-section">
+                    <h3>About Our Team</h3>
+                    <div class="team-container">
+                        <div class="team-member">
+                            <img src="https://media.licdn.com/dms/image/v2/D5603AQEeFzzjVBySWQ/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1727717852969?e=1749081600&v=beta&t=NeByYnqXOJjX7bJV6aZe57ypCI9J0iQgIm_PrXDHMzw" alt="Diya Redkar">
+                            <h4>Diya Redkar</h4>
+                            <p>Founder & CEO</p>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://media.licdn.com/dms/image/v2/D5603AQFiaUWc0e4DkQ/profile-displayphoto-shrink_400_400/B56ZX2DHJAGQAk-/0/1743589767767?e=1749081600&v=beta&t=tGiklbT5a1RxmGpY3YMSlHrjJabKrV3VifBhH_1NpT8" alt="Rutwa Mokal">
+                            <h4>Rutwa Mokal</h4>
+                            <p>Creative Director</p>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://media.licdn.com/dms/image/v2/D5603AQG6FuyWgLOixg/profile-displayphoto-shrink_400_400/B56ZX2HQ8BHoAg-/0/1743590860401?e=1749081600&v=beta&t=WrTnL_smtfl1AFiFagNmkItxyHH9QVonYwyBpJVdO7M" alt="Samruddhi Patil">
+                            <h4>Samruddhi Patil</h4>
+                            <p>Marketing Head</p>
+                        </div>
+                        <div class="team-member">
+                            <img src="https://media.licdn.com/dms/image/v2/D4D03AQGdlDbzDRAtrQ/profile-displayphoto-shrink_100_100/B4DZX2G6vHG4AY-/0/1743590764857?e=1749081600&v=beta&t=yG6h5ZJmU_ZhscClpP9MFt9BMLH320E_G49CMhwRl9A" alt="Akshara Palve">
+                            <h4>Akshara Palve</h4>
+                            <p>Technical Lead</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-section">
+                    <h3>Authenticity</h3>
+                    <p>We are committed to fostering genuine connections and ensuring that every creator's voice is heard and valued.</p>
+                </div>
+                <div class="about-section">
+                    <h3>What Our Customers Are Saying</h3>
+                    <div class="testimonial">
+                        <p>"Trend Tied has completely transformed the way I approach content creation. The resources and community are invaluable!"</p>
+                        <h4>- Alex Johnson</h4>
+                    </div>
+                    <div class="testimonial">
+                        <p>"The team at Trend Tied truly understands the needs of creators. Their tools and insights have helped me grow my audience significantly."</p>
+                        <h4>- Sarah Lee</h4>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="dark-footer">
+        <div class="container">
+            <div class="follow-us">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon twitter"></a>
+                    <a href="https://instagram.com" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://linkedin.com" target="_blank" class="social-icon linkedin"></a>
+                </div>
+            </div>
+            <p class="privacy-links">
+                <a href="PrivacyPolicy.html">Privacy Policy</a> | 
+                <a href="TermsOfUse.html">Terms of Use</a>
+            </p>
+            <p>&copy; 2023 Trend Tied. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function redirectToHome() {
+            window.location.href = "Index.html"; // Redirect to the home page
+        }
+
+        function toggleMenu() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Login or Signup - Trend Tied">
+    <title>Login/Signup - Trend Tied</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #fff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        header {
+            width: 100%;
+            text-align: center;
+        }
+        main {
+            width: 100%;
+            max-width: 500px; /* Increased width for better alignment */
+            text-align: center;
+            margin-top: 80px; /* Adjusted margin to match header height */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+        }
+        footer {
+            width: 100%;
+            text-align: center;
+            margin-top: auto;
+        }
+        .container {
+            background-color: #1e1e1e;
+            padding: 30px; /* Increased padding for better spacing */
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+        .form-header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        .form-header p {
+            margin: 10px 0 20px;
+            font-size: 14px;
+            color: #aaa;
+        }
+        .toggle-buttons {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .toggle-buttons button {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 18px; /* Increased font size for better visibility */
+            padding: 10px 20px;
+            cursor: pointer;
+        }
+        .toggle-buttons .active {
+            color: #fff;
+            border-bottom: 2px solid #6200ea;
+        }
+        .form-container {
+            display: none;
+        }
+        .form-container:not(.hidden) {
+            display: block;
+        }
+        .form-group {
+            margin-bottom: 20px; /* Increased spacing between form fields */
+            text-align: left;
+        }
+        .form-group label {
+            display: block;
+            font-size: 16px; /* Increased label size */
+            margin-bottom: 8px;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 12px; /* Increased padding for better usability */
+            border: 1px solid #333;
+            border-radius: 5px;
+            background-color: #2a2a2a;
+            color: #fff;
+            font-size: 16px; /* Increased input font size */
+        }
+        .form-group input:focus {
+            outline: none;
+            border-color: #6200ea;
+        }
+        .forgot-password {
+            float: right;
+            font-size: 14px; /* Adjusted font size */
+            color: #6200ea;
+            text-decoration: none;
+        }
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+        .cta-btn {
+            background-color: #6200ea;
+            color: #fff;
+            border: none;
+            padding: 12px 20px; /* Adjusted padding for better button size */
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px; /* Increased button font size */
+            box-shadow: 0 0 10px #6200ea, 0 0 20px #6200ea, 0 0 30px #6200ea;
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        .cta-btn:hover {
+            box-shadow: 0 0 20px #7e3ff2, 0 0 30px #7e3ff2, 0 0 40px #7e3ff2;
+        }
+        .dark-header {
+            height: 50px; /* Reduced height */
+            background-color: #1e1e1e;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .dark-header .logo {
+            font-size: 20px; /* Adjusted font size */
+            margin: 0;
+        }
+        .navbar .nav-list {
+            display: flex;
+            gap: 15px;
+            font-size: 14px; /* Adjusted font size */
+        }
+        .navbar .nav-list.show {
+            display: block;
+            flex-direction: column;
+            background-color: #1e1e1e;
+            position: absolute;
+            top: 50px;
+            left: 0;
+            width: 100%;
+            padding: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+        .hamburger-menu {
+            background: none;
+            border: none;
+            color: #fff;
+            font-size: 20px;
+            cursor: pointer;
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .navbar .nav-list {
+                display: none;
+            }
+            .hamburger-menu {
+                display: block;
+            }
+        }
+        .create-account-link, .signin-link {
+            color: #ff007f;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        .create-account-link:hover, .signin-link:hover {
+            color: #ff4da6;
+            text-shadow: 0 0 5px #ff4da6, 0 0 10px #ff4da6;
+        }
+    </style>
+</head>
+<body>
+    <header class="dark-header" style="position: fixed; top: 0; width: 100%; z-index: 1000;">
+        <div class="container" style="text-align: center;">
+            <h1 class="logo" onclick="redirectToHome()" style="cursor: pointer;">Trend Tied</h1>
+            <nav class="navbar">
+                <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
+                <ul class="nav-list">
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="AboutUs.html">About Us</a></li>
+                    <li><a href="Dashboard.html">Dashboard</a></li>
+                    <li><a href="Collaboration.html">Collaboration</a></li>
+                    <li><a href="Feedback.html">Feedback</a></li>
+                    <li><a href="LoginSignup.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main style="margin-top: 80px;"> <!-- Adjusted margin to match header height -->
+        <section id="login-signup" class="section">
+            <div class="container">
+                <div class="toggle-buttons">
+                    <button id="login-btn" class="active" onclick="showLogin()">Sign In</button>
+                    <button id="signup-btn" onclick="showSignup()">Create Account</button>
+                </div>
+                <div id="login-form" class="form-container" onsubmit="handleSignin(event)">
+                    <form action="processLogin.html" method="POST">
+                        <div class="form-group">
+                            <label for="login-email">Username or Email</label>
+                            <input type="email" id="login-email" name="email" placeholder="Enter your email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="login-password">Password</label>
+                            <input type="password" id="login-password" name="password" placeholder="Enter your password" required>
+                        </div>
+                        <div class="form-group">
+                            <label>
+                                <input type="checkbox" id="remember-me" name="remember-me"> Remember me
+                            </label>
+                            <a href="#" class="forgot-password">Forgot Password?</a>
+                        </div>
+                        <div class="form-group" style="text-align: center;"> <!-- Center-align the button -->
+                            <button type="submit" class="cta-btn">Sign In</button>
+                        </div>
+                    </form>
+                    <p>Don't have an account? <a href="#" class="create-account-link" onclick="showSignup()">Create one here</a>.</p>
+                </div>
+                <div id="signup-form" class="form-container hidden" onsubmit="handleSignup(event)">
+                    <form action="processSignup.html" method="POST">
+                        <div class="form-group">
+                            <label for="signup-name">Name</label>
+                            <input type="text" id="signup-name" name="name" placeholder="Enter your full name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-email">Email</label>
+                            <input type="email" id="signup-email" name="email" placeholder="Enter your email address" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-password">Password</label>
+                            <input type="password" id="signup-password" name="password" placeholder="Create a password" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="signup-confirm-password">Confirm Password</label>
+                            <input type="password" id="signup-confirm-password" name="confirm-password" placeholder="Confirm your password" required>
+                        </div>
+                        <div class="form-group center-align">
+                            <button type="submit" class="cta-btn">Create Account</button>
+                        </div>
+                    </form>
+                    <p>Already have an account? <a href="#" class="signin-link" onclick="showLogin()">Sign in here</a>.</p>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="dark-footer">
+    </footer>
+    <script>
+        // Toggle between login and signup forms
+        function showLogin() {
+            document.getElementById('login-form').classList.remove('hidden');
+            document.getElementById('signup-form').classList.add('hidden');
+            document.getElementById('login-btn').classList.add('active');
+            document.getElementById('signup-btn').classList.remove('active');
+        }
+
+        function showSignup() {
+            document.getElementById('signup-form').classList.remove('hidden');
+            document.getElementById('login-form').classList.add('hidden');
+            document.getElementById('signup-btn').classList.add('active');
+            document.getElementById('login-btn').classList.remove('active');
+        }
+
+        // Toast notification
+        function showToast(type, message) {
+            const toast = document.createElement('div');
+            toast.textContent = message;
+            toast.style.position = 'fixed';
+            toast.style.bottom = '20px';
+            toast.style.right = '20px';
+            toast.style.backgroundColor = type === 'success' ? '#4caf50' : '#f44336';
+            toast.style.color = '#fff';
+            toast.style.padding = '10px 20px';
+            toast.style.borderRadius = '5px';
+            toast.style.boxShadow = '0 4px 10px rgba(0, 0, 0, 0.5)';
+            toast.style.zIndex = '1000';
+            document.body.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 3000);
+        }
+
+        // Handle signup form submission
+        document.getElementById('signup-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const name = document.getElementById('signup-name').value.trim();
+            const email = document.getElementById('signup-email').value.trim();
+            const password = document.getElementById('signup-password').value;
+            const confirmPassword = document.getElementById('signup-confirm-password').value;
+
+            if (!name || !email || !password || !confirmPassword) {
+                showToast('error', 'All fields are required!');
+                return;
+            }
+
+            if (password !== confirmPassword) {
+                showToast('error', 'Passwords do not match!');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            if (users.some(user => user.email === email)) {
+                showToast('error', 'Email is already registered!');
+                return;
+            }
+
+            users.push({ name, email, password });
+            localStorage.setItem('users', JSON.stringify(users));
+            showToast('success', 'Account created successfully! Redirecting to login...');
+            setTimeout(() => showLogin(), 2000);
+        });
+
+        // Handle login form submission
+        document.getElementById('login-form').addEventListener('submit', function (e) {
+            e.preventDefault();
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
+
+            if (!email || !password) {
+                showToast('error', 'All fields are required!');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const user = users.find(user => user.email === email && user.password === password);
+
+            if (!user) {
+                showToast('error', 'Invalid email or password!');
+                return;
+            }
+
+            localStorage.setItem('loggedInUser', JSON.stringify(user));
+            showToast('success', 'Login successful! Redirecting to home...');
+            setTimeout(() => {
+                window.location.href = 'Index.html';
+            }, 2000);
+        });
+    </script>
+</body>
+</html>

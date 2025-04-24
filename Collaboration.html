@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Collaboration Dashboard - Trend Tied">
+    <title>Collaboration - Trend Tied</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+    <style>
+        /* Responsive Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(15, 12, 41, 0.95);
+            padding: 0.5rem 1rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-list {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            margin: 0;
+            padding: 0;
+        }
+
+        .nav-list a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .nav-list a:hover {
+            background: rgba(255, 0, 127, 0.2);
+            color: #ff007f;
+        }
+
+        .hamburger-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @media (max-width: 768px) {
+            .nav-list {
+                display: none;
+                flex-direction: column;
+                gap: 1rem;
+                background: rgba(15, 12, 41, 0.95);
+                position: absolute;
+                top: 100%;
+                left: 0;
+                width: 100%;
+                padding: 1rem;
+                box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-list.show {
+                display: flex;
+            }
+
+            .hamburger-menu {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header class="dark-header">
+        <div class="container">
+            <h1 class="logo" onclick="redirectToHome()" style="cursor: pointer;">Trend Tied</h1>
+            <nav class="navbar">
+                <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
+                <ul class="nav-list">
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="Dashboard.html">Dashboard</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="LoginSignup.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="collaboration" class="section">
+            <div class="container">
+                <h2>Collaboration Dashboard</h2>
+                <p>Explore collaboration opportunities based on your niche and engagement style.</p>
+                <div class="categories-grid">
+                    <div class="category-card fashion-beauty-card">
+                        <h3>Fashion & Beauty</h3>
+                        <p>Makeup, skincare, fashion styling, beauty tutorials.</p>
+                        <div class="flashcard">
+                            <h4>Brands:</h4>
+                            <ul>
+                                <li class="brand-name" onclick="redirectToForm('Nykaa')">Nykaa</li>
+                                <li class="brand-name" onclick="redirectToForm('Mamaearth')">Mamaearth</li>
+                                <li class="brand-name" onclick="redirectToForm('MyGlamm')">MyGlamm</li>
+                                <li class="brand-name" onclick="redirectToForm('Lifestyle')">Lifestyle</li>
+                                <li class="brand-name" onclick="redirectToForm('Adidas')">Adidas</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="category-card tech-gadgets-card">
+                        <h3>Tech & Gadgets</h3>
+                        <p>Reviews, unboxings, software tips, AI tools.</p>
+                        <div class="flashcard">
+                            <h4>Brands:</h4>
+                            <ul>
+                                <li class="brand-name" onclick="redirectToForm('Croma')">Croma</li>
+                                <li class="brand-name" onclick="redirectToForm('Samsung')">Samsung</li>
+                                <li class="brand-name" onclick="redirectToForm('Apple')">Apple</li>
+                                <li class="brand-name" onclick="redirectToForm('Reliance Digital')">Reliance Digital</li>
+                                <li class="brand-name" onclick="redirectToForm('Vijay Sales')">Vijay Sales</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="category-card lifestyle-vlogs-card">
+                        <h3>Lifestyle & Vlogs</h3>
+                        <p>Daily routines, productivity, travel diaries.</p>
+                        <div class="flashcard">
+                            <h4>Hotels:</h4>
+                            <ul>
+                                <li class="brand-name" onclick="redirectToForm('The Leela Palace Udaipur')">The Leela Palace Udaipur</li>
+                                <li class="brand-name" onclick="redirectToForm('Raffles Jaipur')">Raffles Jaipur</li>
+                                <li class="brand-name" onclick="redirectToForm('Andaz Delhi')">Andaz Delhi</li>
+                                <li class="brand-name" onclick="redirectToForm('Hotel Taj')">Hotel Taj</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="category-card food-cooking-card">
+                        <h3>Food & Cooking</h3>
+                        <p>Recipes, food challenges, reviews.</p>
+                        <div class="flashcard">
+                            <h4>Brands:</h4>
+                            <ul>
+                                <li class="brand-name" onclick="redirectToForm('Daawat')">Daawat</li>
+                                <li class="brand-name" onclick="redirectToForm('Saffola')">Saffola</li>
+                                <li class="brand-name" onclick="redirectToForm('MDH')">MDH</li>
+                                <li class="brand-name" onclick="redirectToForm('Everest')">Everest</li>
+                                <li class="brand-name" onclick="redirectToForm('Hawkins')">Hawkins</li>
+                                <li class="brand-name" onclick="redirectToForm('Haldiram')">Haldiram</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div id="collaboration-form-container" class="form-container"></div>
+            </div>
+        </section>
+    </main>
+    <footer class="dark-footer">
+        <div class="container">
+            <div class="follow-us">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon twitter"></a>
+                    <a href="https://instagram.com" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://linkedin.com" target="_blank" class="social-icon linkedin"></a>
+                </div>
+            </div>
+            <p class="privacy-links">
+                <a href="PrivacyPolicy.html">Privacy Policy</a> | 
+                <a href="TermsOfUse.html">Terms of Use</a>
+            </p>
+            <p>&copy; 2023 Trend Tied. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        function redirectToCategory(category) {
+            window.location.href = `Collaboration_${category}.html`;
+        }
+
+        function redirectToForm(brandName) {
+            window.location.href = `form.html?brand=${encodeURIComponent(brandName)}`;
+        }
+
+        function redirectToHome() {
+            window.location.href = "Index.html"; // Redirect to the home page
+        }
+
+        function toggleMenu() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('show'); // Toggle the visibility of the navigation menu
+        }
+    </script>
+</body>
+</html>

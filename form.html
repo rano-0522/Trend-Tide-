@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Collaboration Form - Trend Tied">
+    <title>Collaboration Form</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="dark-header">
+        <div class="container" style="text-align: center;">
+            <h1 class="logo" onclick="redirectToHome()" style="cursor: pointer;">Trend Tied</h1>
+            <nav class="navbar">
+                <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
+                <ul class="nav-list">
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="Collaboration.html">Collaboration</a></li>
+                    <li><a href="LoginSignup.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="collaboration-form" class="section">
+            <div class="container">
+                <h2 id="brand-name">Collaborate with </h2>
+                <form action="#" method="post" class="contact-form" onsubmit="handleFormSubmission(event)">
+                    <div class="form-group">
+                        <label for="name">Name:</label>
+                        <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="work">Your Work:</label>
+                        <textarea id="work" name="work" rows="5" placeholder="Describe your work..." required></textarea>
+                    </div>
+                    <button type="submit" class="cta-btn">Submit</button>
+                </form>
+                <p id="submission-message" style="display: none; color: #00ff00; margin-top: 1rem;">Your form has been submitted successfully!</p>
+            </div>
+        </section>
+    </main>
+    <footer class="dark-footer">
+        <div class="container">
+            <p>&copy; 2023 Trend Tied. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Get the brand name from the URL and display it
+        const urlParams = new URLSearchParams(window.location.search);
+        const brandName = urlParams.get('brand');
+        if (brandName) {
+            document.getElementById('brand-name').textContent = `Collaborate with ${brandName}`;
+        }
+
+        // Handle form submission
+        function handleFormSubmission(event) {
+            event.preventDefault(); // Prevent the default form submission behavior
+            const message = document.getElementById('submission-message');
+            message.style.display = 'block'; // Show the submission message
+            setTimeout(() => {
+                window.location.href = 'Collaboration.html'; // Redirect to the collaboration page
+            }, 2000); // Wait for 2 seconds before redirecting
+        }
+
+        function redirectToHome() {
+            window.location.href = "Index.html"; // Redirect to the home page
+        }
+
+        function toggleMenu() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>

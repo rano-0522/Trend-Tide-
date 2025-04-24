@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Dashboard - Trend Tied">
+    <title>Dashboard - Trend Tied</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script> <!-- Include Chart.js -->
+    <style>
+        .social-media-form {
+            background: rgba(15, 12, 41, 0.8);
+            padding: 2rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .social-media-form h3 {
+            color: #00ffff;
+            margin-bottom: 1.5rem;
+        }
+
+        .social-input {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+            gap: 1rem;
+        }
+
+        .social-input i {
+            color: #ff007f;
+            width: 24px;
+        }
+
+        .social-input input {
+            flex: 1;
+            padding: 0.5rem;
+            border: 1px solid #00ffff;
+            border-radius: 5px;
+            background: rgba(15, 12, 41, 0.8);
+            color: #fff;
+        }
+
+        .social-input input:focus {
+            outline: none;
+            border-color: #ff007f;
+            box-shadow: 0 0 5px rgba(255, 0, 127, 0.5);
+        }
+
+        #socialMediaSuccess {
+            display: none;
+            color: #4CAF50;
+            margin-top: 1rem;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header class="dark-header">
+        <div class="container" style="text-align: center;">
+            <h1 class="logo" onclick="redirectToHome()" style="cursor: pointer;">Trend Tied</h1>
+            <nav class="navbar">
+                <button class="hamburger-menu" onclick="toggleMenu()">☰</button>
+                <ul class="nav-list">
+                    <li><a href="Index.html">Home</a></li>
+                    <li><a href="Explore.html">Explore</a></li>
+                    <li><a href="ContactUs.html">Contact Us</a></li>
+                    <li><a href="LoginSignup.html">Sign In</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section id="dashboard" class="section">
+            <div class="container">
+                <h2>Dashboard</h2>
+                <!-- Add Social Media Accounts Section -->
+                <div class="social-media-form">
+                    <h3>Connect Your Social Media Accounts</h3>
+                    <form id="socialMediaForm" onsubmit="handleSocialMedia(event)">
+                        <div class="social-input">
+                            <i class="fab fa-instagram"></i>
+                            <input type="text" id="instagram" placeholder="Instagram Username" required>
+                        </div>
+                        <div class="social-input">
+                            <i class="fab fa-youtube"></i>
+                            <input type="text" id="youtube" placeholder="YouTube Channel URL">
+                        </div>
+                        <div class="social-input">
+                            <i class="fab fa-twitter"></i>
+                            <input type="text" id="twitter" placeholder="Twitter Username">
+                        </div>
+                        <div class="social-input">
+                            <i class="fab fa-tiktok"></i>
+                            <input type="text" id="tiktok" placeholder="TikTok Username">
+                        </div>
+                        <button type="submit" class="cta-btn">Save Social Media Accounts</button>
+                    </form>
+                    <p id="socialMediaSuccess">Social media accounts updated successfully!</p>
+                </div>
+
+                <!-- Analytics Section - Initially Hidden -->
+                <div id="analyticsSection" style="display: none;">
+                    <p>Analyze your performance and optimize your content strategy with detailed insights.</p>
+                    <div class="dashboard-grid">
+                        <!-- Views Pie Chart -->
+                        <div class="dashboard-card">
+                            <h3>Views Breakdown</h3>
+                            <canvas id="viewsChart"></canvas>
+                        </div>
+                        <!-- Content Type Bar Chart -->
+                        <div class="dashboard-card">
+                            <h3>By Content Type</h3>
+                            <canvas id="contentTypeChart"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="dark-footer">
+        <div class="container">
+            <div class="follow-us">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="https://facebook.com" target="_blank" class="social-icon facebook"></a>
+                    <a href="https://twitter.com" target="_blank" class="social-icon twitter"></a>
+                    <a href="https://instagram.com" target="_blank" class="social-icon instagram"></a>
+                    <a href="https://linkedin.com" target="_blank" class="social-icon linkedin"></a>
+                </div>
+            </div>
+            <p class="privacy-links">
+                <a href="PrivacyPolicy.html">Privacy Policy</a> | 
+                <a href="TermsOfUse.html">Terms of Use</a>
+            </p>
+            <p>&copy; 2023 Trend Tied. All rights reserved.</p>
+        </div>
+    </footer>
+    <script>
+        // Clear any existing social media data on page load
+        window.addEventListener('load', () => {
+            localStorage.removeItem('socialMedia');
+            // Clear form fields
+            document.getElementById('instagram').value = '';
+            document.getElementById('youtube').value = '';
+            document.getElementById('twitter').value = '';
+            document.getElementById('tiktok').value = '';
+            // Hide analytics section
+            document.getElementById('analyticsSection').style.display = 'none';
+        });
+
+        function initializeCharts() {
+            // Views Pie Chart
+            const viewsCtx = document.getElementById('viewsChart').getContext('2d');
+            new Chart(viewsCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Followers', 'Non-followers'],
+                    datasets: [{
+                        data: [66.3, 33.7],
+                        backgroundColor: ['#ff007f', '#00ffff'],
+                        hoverOffset: 4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#fff'
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Content Type Bar Chart
+            const contentTypeCtx = document.getElementById('contentTypeChart').getContext('2d');
+            new Chart(contentTypeCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Stories', 'Posts', 'Reels'],
+                    datasets: [
+                        {
+                            label: 'Followers',
+                            data: [64.5, 19.7, 15.9],
+                            backgroundColor: '#ff007f'
+                        },
+                        {
+                            label: 'Non-followers',
+                            data: [35.5, 80.3, 84.1],
+                            backgroundColor: '#00ffff'
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                color: '#fff'
+                            }
+                        }
+                    },
+                    scales: {
+                        x: {
+                            ticks: {
+                                color: '#fff'
+                            }
+                        },
+                        y: {
+                            ticks: {
+                                color: '#fff'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        function handleSocialMedia(event) {
+            event.preventDefault();
+            
+            // Get form values
+            const instagram = document.getElementById('instagram').value;
+            const youtube = document.getElementById('youtube').value;
+            const twitter = document.getElementById('twitter').value;
+            const tiktok = document.getElementById('tiktok').value;
+            
+            // Store in localStorage
+            localStorage.setItem('socialMedia', JSON.stringify({
+                instagram,
+                youtube,
+                twitter,
+                tiktok
+            }));
+            
+            // Show success message
+            const successMsg = document.getElementById('socialMediaSuccess');
+            successMsg.style.display = 'block';
+            
+            // Show analytics section
+            document.getElementById('analyticsSection').style.display = 'block';
+            
+            // Initialize charts
+            initializeCharts();
+            
+            // Hide success message after 3 seconds
+            setTimeout(() => {
+                successMsg.style.display = 'none';
+            }, 3000);
+        }
+
+        // Remove the DOMContentLoaded event listener that was loading saved data
+        
+        function redirectToHome() {
+            window.location.href = "Index.html"; // Redirect to the home page
+        }
+
+        function toggleMenu() {
+            const navList = document.querySelector('.nav-list');
+            navList.classList.toggle('show');
+        }
+    </script>
+</body>
+</html>
